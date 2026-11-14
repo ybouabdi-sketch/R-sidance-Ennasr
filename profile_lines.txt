@@ -1,0 +1,233 @@
+325:  const [profile, setProfile] = useState<any>(null);
+467:    if (!profile) return;
+471:      fullName: profile.full_name,
+472:      email: profile.email,
+473:      phone: profile.phone,
+474:      profilePicture: profile.profile_picture,
+475:      monthlyFee: profile.monthly_fee,
+476:      currency: field === 'currency' ? value : profile.currency,
+477:      residentMonthlyFee: profile.resident_monthly_fee,
+478:      shopMonthlyFee: profile.shop_monthly_fee,
+479:      villaMonthlyFee: profile.villa_monthly_fee,
+480:      membershipFee: field === 'membershipFee' ? numValue : profile.membership_fee,
+481:      shopMembershipFee: field === 'shopMembershipFee' ? numValue : profile.shop_membership_fee,
+482:      villaMembershipFee: field === 'villaMembershipFee' ? numValue : profile.villa_membership_fee,
+483:      certifiedYear: field === 'certifiedYear' ? numValue : profile.certified_year,
+484:      certifiedMonth: field === 'certifiedMonth' ? numValue : profile.certified_month,
+485:      initialBankBalance: field === 'bank' ? numValue : (profile.initial_bank_balance || 0),
+486:      initialCashboxBalance: field === 'cashbox' ? numValue : (profile.initial_cashbox_balance || 0),
+487:      initialUncollectedBalance: field === 'uncollected' ? numValue : (profile.initial_uncollected_balance || 0),
+488:      initialUnpaidBalance: field === 'unpaid' ? numValue : (profile.initial_unpaid_balance || 0),
+489:      showApartments: field === 'showApartments' ? value : (profile.show_apartments === 1),
+490:      showVillas: field === 'showVillas' ? value : (profile.show_villas === 1),
+491:      showShops: field === 'showShops' ? value : (profile.show_shops === 1)
+494:    const res = await fetch(`/api/syndic/profile/${syndicId}`, {
+504:      alert(t('Error updating profile'));
+510:    if (!profile) return;
+513:      fullName: profile.full_name,
+514:      email: profile.email,
+515:      phone: profile.phone,
+516:      profilePicture: profile.profile_picture,
+517:      monthlyFee: profile.monthly_fee,
+518:      currency: profile.currency,
+519:      residentMonthlyFee: profile.resident_monthly_fee,
+520:      shopMonthlyFee: profile.shop_monthly_fee,
+521:      villaMonthlyFee: profile.villa_monthly_fee,
+522:      membershipFee: profile.membership_fee,
+523:      shopMembershipFee: profile.shop_membership_fee,
+524:      villaMembershipFee: profile.villa_membership_fee,
+525:      certifiedYear: profile.certified_year,
+526:      certifiedMonth: profile.certified_month,
+527:      initialBankBalance: initialBalanceType === 'bank' ? Number(initialBalanceValue) : (profile.initial_bank_balance || 0),
+528:      initialCashboxBalance: initialBalanceType === 'cashbox' ? Number(initialBalanceValue) : (profile.initial_cashbox_balance || 0),
+529:      initialUncollectedBalance: initialBalanceType === 'uncollected' ? Number(initialBalanceValue) : (profile.initial_uncollected_balance || 0),
+530:      initialUnpaidBalance: initialBalanceType === 'unpaid' ? Number(initialBalanceValue) : (profile.initial_unpaid_balance || 0)
+533:    const res = await fetch(`/api/syndic/profile/${syndicId}`, {
+815:        setAutoYear(String(profile?.certified_year || new Date().getFullYear()));
+820:  }, [isModalOpen, editingItem, activeTab, profile]);
+827:      if (resId && amount && profile) {
+831:            ? (profile.shop_membership_fee || 0) 
+832:            : (resident.status === 'villa' ? (profile.villa_membership_fee || 0) : (profile.membership_fee || 0));
+838:            const certYear = profile.certified_year || new Date().getFullYear();
+839:            const certMonth = profile.certified_month || 1;
+871:  }, [selectedResidentId, paymentAmount, residents, payments, profile, isRtl, activeTab, isModalOpen, editingItem]);
+1047:    const res = await fetch(`/api/syndic/profile/${syndicId}`);
+1303:        if (profile?.total_units > 0 && count >= profile.total_units) {
+1304:          setResidentError(t('You have reached the maximum number of units allowed for your account ({{total}} units). Please contact support to increase your limit.', { total: profile.total_units }));
+1524:                  ${profile?.profile_picture ? `<img src="${profile.profile_picture}" class="syndic-logo" />` : ''}
+1528:                  <p class="residence-name">${profile?.residence_address || ''}</p>
+1542:              <span class="phone-number">${profile?.phone || ''}</span>
+1543:              <span>${profile?.email || ''}</span>
+1568:    const certYear = profile?.certified_year || new Date().getFullYear();
+1569:    const certMonth = profile?.certified_month || 1;
+1571:      ? (profile?.shop_membership_fee ?? 0) 
+1572:      : (resident.status === 'villa' ? (profile?.villa_membership_fee ?? 0) : (profile?.membership_fee ?? 0));
+1593:    if (!syndicId || !profile) return;
+1595:      const res = await fetch(`/api/syndic/profile/${syndicId}`, {
+1599:          ...profile,
+1779:          <div class="stat-value">${formatCurrency(projectStats.targetAmount, profile?.currency || 'DH')}</div>
+1783:          <div class="stat-value">${formatCurrency(projectStats.totalPaid, profile?.currency || 'DH')}</div>
+1787:          <div class="stat-value ${projectStats.totalRemaining <= 0 ? 'text-green' : 'text-red'}">${formatCurrency(-projectStats.totalRemaining, profile?.currency || 'DH')}</div>
+1810:              <td>${payment ? formatCurrency(payment.amount, profile?.currency || 'DH') : '-'}</td>
+1813:              <td class="${payment && payment.remaining_balance <= 0 ? 'text-green' : 'text-red'}">${payment ? formatCurrency(-payment.remaining_balance, profile?.currency || 'DH') : formatCurrency(-(selectedProject?.individual_payment || 0), profile?.currency || 'DH')}</td>
+1832:        setProfile({ ...profile, profile_picture: reader.result as string });
+1843:        setProfile({ ...profile, stamp_signature: reader.result as string });
+1884:              <td>${formatCurrency(c.amount, profile?.currency || 'DH')}</td>
+1932:              ? (profile?.membership_fee ?? 0) 
+1933:              : (selectedReport === 'villas' ? (profile?.villa_membership_fee ?? 0) : (profile?.shop_membership_fee ?? 0));
+1934:            const certYear = profile?.certified_year || new Date().getFullYear();
+1935:            const certMonth = profile?.certified_month || 1;
+1973:                <td class="${balanceAtSelectedMonth >= 0 ? 'paid' : 'unpaid'}">${formatCurrency(balanceAtSelectedMonth, profile?.currency || 'DH')}</td>
+2091:              <td>${formatCurrency(op.amount, profile?.currency || 'DH')}</td>
+2097:        ${financialSubTab === 'bank' ? t('Bank Balance') : t('Cash Box Balance')}: ${formatCurrency(total, profile?.currency || 'DH')}
+2174:                  <td>${formatCurrency(ri.rental_price, profile?.currency || 'DH')}</td>
+2182:                  <td>${formatCurrency(balance, profile?.currency || 'DH')}</td>
+2194:                <td>${formatCurrency(oi.amount, profile?.currency || 'DH')}</td>
+2232:              <td>${formatCurrency(e.amount, profile?.currency || 'DH')}</td>
+2242:            <td colspan="4"><strong>${formatCurrency(filteredExpenses.reduce((acc, curr) => acc + curr.amount, 0), profile?.currency || 'DH')}</strong></td>
+2345:            ? (profile?.membership_fee ?? 0) 
+2346:            : (selectedReport === 'villas' ? (profile?.villa_membership_fee ?? 0) : (profile?.shop_membership_fee ?? 0));
+2347:          const certYear = profile?.certified_year || new Date().getFullYear();
+2348:          const certMonth = profile?.certified_month || 1;
+2510:          if (profile?.total_units > 0 && currentUnits >= profile.total_units) {
+2512:            const reason = t('Maximum units limit reached ({{total}})', { total: profile.total_units });
+2759:    if (!profile) return;
+2767:      profilePicture: profile.profile_picture,
+2768:      stampSignature: profile.stamp_signature,
+2770:      monthlyFee: Math.round(Number(profile.monthly_fee || 0) * 100) / 100,
+2771:      currency: profile.currency || 'DH',
+2772:      residentMonthlyFee: Math.round(Number(profile.resident_monthly_fee || 0) * 100) / 100,
+2773:      shopMonthlyFee: Math.round(Number(profile.shop_monthly_fee || 0) * 100) / 100,
+2774:      villaMonthlyFee: Math.round(Number(profile.villa_monthly_fee || 0) * 100) / 100,
+2775:      membershipFee: Math.round(Number(profile.membership_fee || 0) * 100) / 100,
+2776:      shopMembershipFee: Math.round(Number(profile.shop_membership_fee || 0) * 100) / 100,
+2777:      villaMembershipFee: Math.round(Number(profile.villa_membership_fee || 0) * 100) / 100,
+2778:      initialBankBalance: Math.round(Number(profile.initial_bank_balance || 0) * 100) / 100,
+2779:      initialCashboxBalance: Math.round(Number(profile.initial_cashbox_balance || 0) * 100) / 100,
+2780:      initialUncollectedBalance: Math.round(Number(profile.initial_uncollected_balance || 0) * 100) / 100,
+2781:      initialUnpaidBalance: Math.round(Number(profile.initial_unpaid_balance || 0) * 100) / 100,
+2782:      certifiedYear: profile.certified_year || new Date().getFullYear(),
+2783:      certifiedMonth: profile.certified_month || (new Date().getMonth() + 1),
+2784:      showApartments: profile.show_apartments,
+2785:      showVillas: profile.show_villas,
+2786:      showShops: profile.show_shops
+2789:    const res = await fetch(`/api/syndic/profile/${syndicId}`, {
+2800:      window.dispatchEvent(new Event('profileUpdated'));
+2806:    if (!profile) return;
+2813:      fullName: profile.full_name || '',
+2814:      email: profile.email || '',
+2815:      phone: profile.phone || '',
+2816:      residenceAddress: profile.residence_address || '',
+2817:      profilePicture: profile.profile_picture || '',
+2818:      monthlyFee: Math.round(Number(profile.monthly_fee || 0) * 100) / 100,
+2820:      residentMonthlyFee: monthlyFeeModalType === 'resident' ? newFee : Math.round(Number(profile.resident_monthly_fee || 0) * 100) / 100,
+2821:      shopMonthlyFee: monthlyFeeModalType === 'shop' ? newFee : Math.round(Number(profile.shop_monthly_fee || 0) * 100) / 100,
+2822:      villaMonthlyFee: monthlyFeeModalType === 'villa' ? newFee : Math.round(Number(profile.villa_monthly_fee || 0) * 100) / 100,
+2823:      membershipFee: Math.round(Number(profile.membership_fee || 0) * 100) / 100,
+2824:      shopMembershipFee: Math.round(Number(profile.shop_membership_fee || 0) * 100) / 100,
+2825:      villaMembershipFee: Math.round(Number(profile.villa_membership_fee || 0) * 100) / 100,
+2826:      initialBankBalance: Math.round(Number(profile.initial_bank_balance || 0) * 100) / 100,
+2827:      initialCashboxBalance: Math.round(Number(profile.initial_cashbox_balance || 0) * 100) / 100,
+2828:      initialUncollectedBalance: Math.round(Number(profile.initial_uncollected_balance || 0) * 100) / 100,
+2829:      initialUnpaidBalance: Math.round(Number(profile.initial_unpaid_balance || 0) * 100) / 100,
+2830:      certifiedYear: profile.certified_year || new Date().getFullYear(),
+2831:      certifiedMonth: profile.certified_month || (new Date().getMonth() + 1),
+2832:      showApartments: profile.show_apartments,
+2833:      showVillas: profile.show_villas,
+2834:      showShops: profile.show_shops
+2838:      const res = await fetch(`/api/syndic/profile/${syndicId}`, {
+3357:                <td>${formatCurrency(p.target_amount, profile?.currency || 'DH')}</td>
+3358:                <td>${formatCurrency(projectTotalPaid, profile?.currency || 'DH')}</td>
+3359:                <td>${formatCurrency(projectRemaining, profile?.currency || 'DH')}</td>
+3595:    { icon: <UserCircle className="w-4 h-4" strokeWidth={1.5} />, label: t('My Account'), onClick: () => setActiveTab('profile'), isActive: activeTab === 'profile' },
+3714:      case 'profile': return t('My Account');
+3769:    if (!profile || !residents || !payments) return [];
+3776:        ? (profile.shop_membership_fee ?? 0) 
+3777:        : (r.status === 'villa' ? (profile.villa_membership_fee ?? 0) : (profile.membership_fee ?? 0));
+3779:      const certYear = profile.certified_year || currentYear;
+3780:      const certMonth = profile.certified_month || 1;
+3799:        ? (profile.shop_membership_fee ?? 0) 
+3800:        : (r.status === 'villa' ? (profile.villa_membership_fee ?? 0) : (profile.membership_fee ?? 0));
+3802:      const certYear = profile.certified_year || currentYear;
+3803:      const certMonth = profile.certified_month || 1;
+3824:  }, [residents, payments, profile]);
+3856:        onProfileClick={() => setActiveTab('profile')}
+3864:            {profile?.expiration_date && (
+3868:                <span className={isExpired(profile.expiration_date) ? 'text-red-600 font-bold' : 'text-blue-600 font-bold'}>
+3869:                  {getRemainingTime(profile.expiration_date)}
+3929:                      {formatCurrency(dashboardStats.totals.bankBalance || 0, profile?.currency || 'DH')}
+3935:                      {formatCurrency(dashboardStats.totals.cashboxBalance || 0, profile?.currency || 'DH')}
+3941:                      {formatCurrency((dashboardStats.totals.bankBalance || 0) + (dashboardStats.totals.cashboxBalance || 0), profile?.currency || 'DH')}
+3949:                      {formatCurrency(dashboardStats.totals.expenses || 0, profile?.currency || 'DH')}
+3955:                      {formatCurrency(dashboardStats.totals.income || 0, profile?.currency || 'DH')}
+3961:                      {formatCurrency(dashboardStats.totals.overdueAmount || 0, profile?.currency || 'DH')}
+4018:                    const passif = (profile?.initial_bank_balance || 0) + (profile?.initial_cashbox_balance || 0) + (dashboardStats.totals.income || 0) - (dashboardStats.totals.expenses || 0);
+4035:                      {formatCurrency((dashboardStats.totals.bankBalance || 0) + (dashboardStats.totals.cashboxBalance || 0), profile?.currency || 'DH')}
+4042:                        (profile?.initial_bank_balance || 0) + (profile?.initial_cashbox_balance || 0) + (dashboardStats.totals.income || 0) - (dashboardStats.totals.expenses || 0), 
+4043:                        profile?.currency || 'DH'
+4051:                      ((profile?.initial_bank_balance || 0) + (profile?.initial_cashbox_balance || 0) + (dashboardStats.totals.income || 0) - (dashboardStats.totals.expenses || 0)) >= 0 ? 'text-blue-900' : 'text-red-600'
+4055:                        ((profile?.initial_bank_balance || 0) + (profile?.initial_cashbox_balance || 0) + (dashboardStats.totals.income || 0) - (dashboardStats.totals.expenses || 0)), 
+4056:                        profile?.currency || 'DH'
+4090:                        <span className="font-bold text-blue-700">{formatCurrency(dashboardStats.totals.apartmentIncome || 0, profile?.currency || 'DH')}</span>
+4172:                        <span className="font-bold text-emerald-700">{formatCurrency(dashboardStats.totals.villaIncome || 0, profile?.currency || 'DH')}</span>
+4250:                        <span className="font-bold text-orange-600">{formatCurrency(dashboardStats.totals.shopIncome || 0, profile?.currency || 'DH')}</span>
+4348:                                    <span className="font-bold text-indigo-700">{formatCurrency(project.target_amount, profile?.currency || 'DH')}</span>
+4352:                                    <span className="font-bold text-emerald-600">{formatCurrency(totalPaid, profile?.currency || 'DH')}</span>
+4356:                                    <span className="font-bold text-rose-500">{formatCurrency(remaining, profile?.currency || 'DH')}</span>
+4597:                    {formatCurrency(r.current_balance || 0, profile?.currency || 'DH')}
+4746:                    <td className="p-3 text-sm text-blue-600 font-bold">{formatCurrency(c.amount, profile?.currency || 'DH')}</td>
+4848:                    <td className="p-3 text-sm text-red-600 font-bold">{formatCurrency(e.amount, profile?.currency || 'DH')}</td>
+4856:                  <td colSpan={1} className="p-3 text-sm text-red-600">{formatCurrency(filteredExpenses.reduce((acc, curr) => acc + curr.amount, 0), profile?.currency || 'DH')}</td>
+4961:                      ? (profile?.membership_fee ?? 0) 
+4962:                      : (selectedReport === 'villas' ? (profile?.villa_membership_fee ?? 0) : (profile?.shop_membership_fee ?? 0));
+4963:                    const certYear = profile?.certified_year || new Date().getFullYear();
+4964:                    const certMonth = profile?.certified_month || 1;
+5007:                            {formatCurrency(balanceAtSelectedMonth, profile?.currency || 'DH')}
+5372:                (combinedOps.reduce((acc, curr) => acc + (curr.operation_type === 'deposit' ? curr.amount : -curr.amount), 0) + (financialSubTab === 'bank' ? (profile?.initial_bank_balance || 0) : (profile?.initial_cashbox_balance || 0))) >= 0 
+5376:                {formatCurrency(combinedOps.reduce((acc, curr) => acc + (curr.operation_type === 'deposit' ? curr.amount : -curr.amount), 0) + (financialSubTab === 'bank' ? (profile?.initial_bank_balance || 0) : (profile?.initial_cashbox_balance || 0)), profile?.currency || 'DH')}
+5418:                      {formatCurrency(op.amount, profile?.currency || 'DH')}
+5440:                  .reduce((acc, curr) => acc + (curr.operation_type === 'deposit' ? curr.amount : 0), 0), profile?.currency || 'DH')}
+5455:                  .reduce((acc, curr) => acc + (curr.operation_type === 'withdrawal' ? curr.amount : 0), 0), profile?.currency || 'DH')}
+5534:                            <td className="p-4 text-sm font-bold text-blue-600">{formatCurrency(p.amount, profile?.currency || 'DH')}</td>
+5760:                          <td className="p-3 text-sm font-bold text-blue-600">{formatCurrency(ri.rental_price, profile?.currency || 'DH')}</td>
+5809:                            {formatCurrency(balance, profile?.currency || 'DH')}
+5841:                      <td className="p-3 text-sm font-bold text-blue-600">{formatCurrency(oi.amount, profile?.currency || 'DH')}</td>
+5850:                    <td className="p-3 text-base text-green-600">{formatCurrency(totalOtherIncome, profile?.currency || 'DH')}</td>
+5977:            currency={profile?.currency || 'DH'}
+6051:                    <span className="text-xl font-black leading-none text-blue-900">{formatCurrency(selectedProject.individual_payment || 0, profile?.currency || 'DH')}</span>
+6064:                      <p className="text-2xl font-black text-gray-900">{formatCurrency(projectStats.targetAmount, profile?.currency || 'DH')}</p>
+6073:                      <p className="text-2xl font-black text-blue-600">{formatCurrency(projectStats.totalPaid, profile?.currency || 'DH')}</p>
+6082:                      <p className={clsx("text-2xl font-black", projectStats.totalRemaining <= 0 ? "text-emerald-600" : "text-rose-600")}>{formatCurrency(-projectStats.totalRemaining, profile?.currency || 'DH')}</p>
+6146:                            {payment ? formatCurrency(payment.amount, profile?.currency || 'DH') : '-'}
+6150:                            {payment ? formatCurrency(-payment.remaining_balance, profile?.currency || 'DH') : formatCurrency(-(selectedProject.individual_payment || 0), profile?.currency || 'DH')}
+6213:                      {formatCurrency(filteredProjectPaymentsData.reduce((sum, item) => sum + (item.payment?.amount || 0), 0), profile?.currency || 'DH')}
+6225:                      }, 0), profile?.currency || 'DH')}
+6286:                            <td className="p-3 text-sm font-black text-gray-900">{formatCurrency(project.target_amount, profile?.currency || 'DH')}</td>
+6287:                            <td className="p-3 text-sm font-black text-blue-600">{formatCurrency(projectTotalPaid, profile?.currency || 'DH')}</td>
+6288:                            <td className="p-3 text-sm font-black text-rose-600">{formatCurrency(projectRemaining, profile?.currency || 'DH')}</td>
+6640:      {activeTab === 'profile' && profile && (
+6654:                    src={profile.profile_picture || 'https://picsum.photos/200'} 
+6658:                  <label htmlFor="syndic-profile-upload" className="absolute bottom-0 right-0 bg-blue-600 text-white p-2 rounded-full shadow-lg cursor-pointer hover:bg-blue-700 transition-colors">
+6661:                      id="syndic-profile-upload" 
+6675:                    {profile.stamp_signature ? (
+6677:                        src={profile.stamp_signature} 
+6704:                <Input name="fullName" defaultValue={profile.full_name} required />
+6708:                <Input name="email" type="email" defaultValue={profile.email} required />
+6712:                <Input name="phone" defaultValue={profile.phone} required dir="ltr" />
+6716:                <Input name="residenceName" defaultValue={profile.residence_name || profile.residence_address} />
+6720:                <Input name="residenceAddress" defaultValue={profile.residence_address} />
+6729:                  <div className="text-lg font-bold text-sky-900">{profile.plan ? t(profile.plan) : t('Standard')}</div>
+6734:                    {profile.total_units === 0 ? t('Unlimited') : (profile.total_units || 0)}
+6739:                  <div className={`text-lg font-bold ${isExpired(profile.expiration_date) ? 'text-red-600' : 'text-green-600'}`}>
+6740:                    {getRemainingTime(profile.expiration_date)}
+6745:                  <div className="text-lg font-bold text-sky-900">{profile.activation_date || '-'}</div>
+6749:                  <div className="text-lg font-bold text-sky-900">{profile.expiration_date || '-'}</div>
+6774:              defaultValue={monthlyFeeModalType === 'resident' ? (profile?.resident_monthly_fee ?? 0) : (monthlyFeeModalType === 'shop' ? (profile?.shop_monthly_fee ?? 0) : (profile?.villa_monthly_fee ?? 0))} 
+6780:            <select name="currency" className="w-full p-2 border rounded-xl" defaultValue={profile?.currency || 'DH'} required>
+7274:              <p className="text-sm text-blue-800 font-medium">{t('Rental Price')}: {formatCurrency(payingRental.rental_price, profile?.currency || 'DH')}</p>
+7275:              <p className="text-sm text-blue-800 font-medium">{t('Total Paid')}: {formatCurrency(payingRental.total_paid || 0, profile?.currency || 'DH')}</p>
+7350:        profile={profile}
+7416:        profile={profile}
+7427:        profile={profile}
+7439:        profile={profile}
+7460:              {t('Amount')} ({profile?.currency || 'DH'})
