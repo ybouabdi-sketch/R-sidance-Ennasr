@@ -85,7 +85,7 @@ export default function Login() {
   const buttonSize = loginConfig?.global?.buttonSize;
   const buttonWeight = loginConfig?.global?.buttonWeight;
 
-  const appName = loginConfig?.appName || 'Résidance Ennasr';
+  const appName = loginConfig?.appName || 'Résidence Ennasr';
   const showLogo = loginConfig?.showLogo !== false;
   const showAppName = loginConfig?.showAppName !== false;
   const logoUrl = loginConfig?.logoUrl;

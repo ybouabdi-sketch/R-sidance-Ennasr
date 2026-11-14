@@ -37,7 +37,7 @@ export function DashboardLayout({ children, title, sidebarItems, headerContent, 
   const isRtl = false;
 
   React.useEffect(() => {
-    document.title = 'Résidance Ennasr';
+    document.title = 'Résidence Ennasr';
   }, []);
 
   // Filter items for bottom nav (max 5)
@@ -139,7 +139,7 @@ export function DashboardLayout({ children, title, sidebarItems, headerContent, 
             className={`text-2xl font-bold tracking-tight text-header-bg ${onLogoClick ? 'cursor-pointer hover:opacity-80 transition-opacity' : ''}`}
             onClick={onLogoClick}
           >
-            Résidance Ennasr
+            Résidence Ennasr
           </h2>
           <button className="lg:hidden text-app-text" onClick={() => setIsSidebarOpen(false)}>
             <X className="w-6 h-6" />

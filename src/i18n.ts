@@ -255,7 +255,7 @@ const resources = {
       "Ended": "Terminé",
       "My Info": "Mes infos",
       "Welcome": "Bienvenue",
-      "Welcome to SandicNet Resident Portal.": "Bienvenue sur le portail résident Résidance Ennasr.",
+      "Welcome to SandicNet Resident Portal.": "Bienvenue sur le portail résident Résidence Ennasr.",
       "No payments found.": "Aucun paiement trouvé.",
       "All Notifications": "Toutes les notifications",
       "Unread": "Non lu",

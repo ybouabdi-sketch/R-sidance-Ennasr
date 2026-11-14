@@ -301,7 +301,7 @@ const initSettings = () => {
   const loginConfig = db.prepare("SELECT * FROM settings WHERE key = 'login_page_config'").get() as any;
   if (!loginConfig) {
     const defaultLoginConfig = {
-      appName: 'Résidance Ennasr',
+      appName: 'Résidence Ennasr',
       logoUrl: '',
       showLogo: true,
       showAppName: true,
@@ -332,8 +332,8 @@ const initSettings = () => {
   } else {
     try {
       const currentConfig = JSON.parse(loginConfig.value);
-      if (currentConfig.appName === 'Syndicom' || currentConfig.appName === 'SandicNet' || currentConfig.appName === 'Syndicoom' || currentConfig.appName === 'Syndicos') {
-        currentConfig.appName = 'Résidance Ennasr';
+      if (currentConfig.appName === 'Syndicom' || currentConfig.appName === 'SandicNet' || currentConfig.appName === 'Syndicoom' || currentConfig.appName === 'Syndicos' || currentConfig.appName === 'Résidance Ennasr') {
+        currentConfig.appName = 'Résidence Ennasr';
         db.prepare("UPDATE settings SET value = ? WHERE key = 'login_page_config'").run(JSON.stringify(currentConfig));
       }
     } catch (e) {
